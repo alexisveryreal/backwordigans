@@ -13,6 +13,7 @@ import {
 } from "@/components/ui/form";
 import { Input } from "@/components/ui/input";
 import { useEffect } from "react";
+import { useToast } from "../ui/use-toast";
 
 const formSchema = z.object({
   word: z.string().min(1),
@@ -29,6 +30,8 @@ const BackwordForm = () => {
       backWord: "",
     },
   });
+
+  const { toast } = useToast();
 
   const word = form.watch("word");
   const setValue = form.setValue;
@@ -75,9 +78,14 @@ const BackwordForm = () => {
                   <Button
                     type="button"
                     onClick={() =>
-                      navigator.clipboard.writeText(
-                        form.getValues("backWord") ?? "",
-                      )
+                      navigator.clipboard
+                        .writeText(form.getValues("backWord") ?? "")
+                        .then(() => {
+                          toast({
+                            title: "Copied",
+                            description: form.getValues("backWord") ?? "",
+                          });
+                        })
                     }
                   >
                     Copy
