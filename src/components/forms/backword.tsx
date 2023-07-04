@@ -71,7 +71,7 @@ const BackwordForm = () => {
           name="backWord"
           render={({ field }) => (
             <FormItem>
-              <FormLabel>Word</FormLabel>
+              <FormLabel>Back Word</FormLabel>
               <FormControl>
                 <div className="flex w-full max-w-sm items-center space-x-2">
                   <Input {...field} disabled />
