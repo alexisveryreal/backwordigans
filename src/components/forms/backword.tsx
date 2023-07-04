@@ -92,9 +92,7 @@ const BackwordForm = () => {
                   </Button>
                 </div>
               </FormControl>
-              <FormDescription>
-                This is the word that will be printed backwords.
-              </FormDescription>
+
               <FormMessage />
             </FormItem>
           )}
